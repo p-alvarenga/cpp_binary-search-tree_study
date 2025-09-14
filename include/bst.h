@@ -21,7 +21,7 @@ public:
 
 	void getAllLeaves(std::vector<Node*>* leaves, Node* cur) const;
 	void searchNodeById(int id, Node** ptr, Node* cur) const;
-
+	
 	void print(Node* n, std::string prefix = "", bool is_left = false, int depth = 0); // include depth too
 };
 
@@ -29,8 +29,8 @@ public:
  * Todo List 
  * - [x] Search all leaves 
  * - [ ] Delete a given Node  
- * - [ ] ...  
- *
+ * - [ ] ...
+ * 
  */
 
 #endif
