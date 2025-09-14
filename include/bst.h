@@ -14,9 +14,9 @@ private:
 	void insertNode(Node* target, int value = 0); 
 public: 
 	Node* root; 
-	int current_id;
+	size_t size;
 
-	BST(int value): root(new Node(0, value)), current_id(0) {;}
+	BST(int value): root(new Node(0, value)), size(0) {;}
 	inline void insert(int value) { insertNode(this->root, value); }
 
 	void getAllLeaves(std::vector<Node*>* leaves, Node* cur) const;

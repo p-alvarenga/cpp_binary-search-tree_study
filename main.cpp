@@ -11,7 +11,7 @@ int main(void)
 
 	BST tree(20); 
 	
-	for (int i = 1; i <= 10; i++)
+	for (int i = 0; i <= 20; i++)
 		values.push_back(i);
 
 	std::shuffle(values.begin(), values.end(), std::default_random_engine(rd())); 
@@ -19,16 +19,14 @@ int main(void)
 	for (int i : values)
 		tree.insert(i);
 
-	tree.print(tree.root); 
+	//tree.print(tree.root); 
 	
-	Node* test; 
+	Node* test = nullptr;
 
-	tree.searchNodeById(4, &test, tree.root);
+	tree.searchNodeById(40, &test, tree.root);
 	
 	if (test != nullptr)
 		printf("\nn value: %i, n id: %i\n", test->value, test->id);
-	else 
-		printf("could not find id 4\n");
 
 	return 0; 
 }

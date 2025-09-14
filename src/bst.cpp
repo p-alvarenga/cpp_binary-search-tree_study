@@ -1,5 +1,4 @@
 #include "../include/bst.h"
-#include <iostream> // ERROR ERROR ERROR PUT IN HEADER FILE!
 
 void BST::insertNode(Node* target, int value) 
 {
@@ -9,8 +8,8 @@ void BST::insertNode(Node* target, int value)
 	{
 		if (target->left == nullptr)
 		{
-			this->current_id++; 
-			target->left = new Node(current_id, value, target);
+			this->size++; 
+			target->left = new Node(size, value, target);
 		}
 		else
 			insertNode(target->left, value);
@@ -19,8 +18,8 @@ void BST::insertNode(Node* target, int value)
 	{
 		if (target->right == nullptr)
 		{
-			this->current_id++;
-			target->right = new Node(current_id, value, target);
+			this->size++;
+			target->right = new Node(size, value, target);
 		}
 		else 
 			insertNode(target->right, value);	
