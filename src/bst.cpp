@@ -4,20 +4,24 @@
 void BST::insertNode(Node* target, int value) 
 {
 	if (target == nullptr) return; 
-	
-	this->current_id++; 
-	
+		
 	if (value <= target->value) 
 	{
 		if (target->left == nullptr)
+		{
+			this->current_id++; 
 			target->left = new Node(current_id, value, target);
+		}
 		else
 			insertNode(target->left, value);
 	}
 	else 
 	{
 		if (target->right == nullptr)
+		{
+			this->current_id++;
 			target->right = new Node(current_id, value, target);
+		}
 		else 
 			insertNode(target->right, value);	
 	}
@@ -40,13 +44,27 @@ void BST::print(Node* n, std::string prefix, bool is_left, int depth)
 	print(n->left, prefix, true, depth + 1);
 }
 
-void BST::getAllLeaves(std::vector<Node*>* leaves, Node* cur) const
+void BST::getAllLeaves(std::vector<Node*>* leaves, Node* cur) const 
 {
 	if (cur == nullptr) return;
 
-	if (cur->right == nullptr && cur->left == nullptr) 
+	if (cur->isEmpty()) 
 		leaves->push_back(cur);
-	
-	getAllLeaves(leaves, cur->right); 
+
 	getAllLeaves(leaves, cur->left);
+	getAllLeaves(leaves, cur->right); 
+}
+
+void BST::searchNodeById(int id, Node** ptr, Node* cur) const
+{
+	if (cur == nullptr) return; 
+
+	if (cur->id == id) 
+	{
+		*ptr = cur; 
+		return;
+	}
+
+	searchNodeById(id, ptr, cur->left);
+	searchNodeById(id, ptr, cur->right);
 }
