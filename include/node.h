@@ -6,7 +6,7 @@ class Node
 public: 
 	Node* right; 
 	Node* left; 
-	Node* parent; 
+	Node* parent;
 
 	int id; 
 	int value;
@@ -20,11 +20,17 @@ public:
 	{;}
 
 	inline const bool isEmpty() const;
+	inline const bool isFull() const; 
 };
 
 inline const bool Node::isEmpty() const
 {
 	return (this->right == nullptr && this->left == nullptr);
+}
+
+inline const bool Node::isFull() const 
+{
+	return (this->right != nullptr && this->left != nullptr); // this differ Node::isEmpty() 
 }
 
 #endif

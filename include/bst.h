@@ -11,8 +11,11 @@
 class BST
 {
 private:
+	int cur_id;
 	void insertNode(Node* target, int value = 0); 
+
 public: 
+	Node** findDeepestLeftChild(Node** cur) const; // <-- The SMALLEST node in the right subtree 
 	Node* root; 
 	size_t size;
 
@@ -20,8 +23,10 @@ public:
 	inline void insert(int value) { insertNode(this->root, value); }
 
 	void getAllLeaves(std::vector<Node*>* leaves, Node* cur) const;
-	void searchNodeById(int id, Node** ptr, Node* cur) const;
-	
+	Node** searchNodeById(int id, Node** cur) const;
+	bool deleteNodeById(int id); 
+	// void deleteNodeByPtr(Node* n) <- Need to verify if "n" is part of tree (it's inside this->root)
+
 	void print(Node* n, std::string prefix = "", bool is_left = false, int depth = 0); // include depth too
 };
 
@@ -30,7 +35,6 @@ public:
  * - [x] Search all leaves 
  * - [ ] Delete a given Node  
  * - [ ] ...
- * 
  */
 
 #endif
