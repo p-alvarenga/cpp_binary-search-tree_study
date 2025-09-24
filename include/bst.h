@@ -5,7 +5,6 @@
 #include <string>
 #include <vector> 
 
-#include "config.h"
 #include "node.h"
 
 class BST
@@ -13,9 +12,9 @@ class BST
 private:
 	int cur_id;
 	void insertNode(Node* target, int value = 0); 
+	Node** findDeepestLeftChild(Node** cur) const; // <-- The node in the right subtree
 
 public: 
-	Node** findDeepestLeftChild(Node** cur) const; // <-- The SMALLEST node in the right subtree 
 	Node* root; 
 	size_t size;
 
@@ -24,14 +23,15 @@ public:
 
 	void getAllLeaves(std::vector<Node*>* leaves, Node* cur) const;
 	Node** searchNodeById(int id, Node** cur) const;
-	bool deleteNodeById(int id); 
+	bool deleteNodeById(int id);
+	int geTreetHeight()
+
 	// void deleteNodeByPtr(Node* n) <- Need to verify if "n" is part of tree (it's inside this->root)
 
-	void print(Node* n, std::string prefix = "", bool is_left = false, int depth = 0); // include depth too
+	void print(Node* n, std::string prefix, bool is_left = false, int depth = 0); // include depth too
 };
 
-/*
- * Todo List 
+/* Todo List 
  * - [x] Search all leaves 
  * - [ ] Delete a given Node  
  * - [ ] ...

@@ -1,5 +1,4 @@
 #include "../include/bst.h"
-#include <algorithm>
 
 void BST::insertNode(Node* target, int value) 
 {
@@ -8,26 +7,32 @@ void BST::insertNode(Node* target, int value)
 	if (value <= target->value) 
 	{
 		if (target->left == nullptr)
+		{
 			target->left = new Node(++this->cur_id, value, target);
+			this->size++; 
+		}
 		else
 			insertNode(target->left, value);
 	}
 	else 
 	{
 		if (target->right == nullptr)
+		{
 			target->right = new Node(++this->cur_id, value, target);
+			this->size++;
+		}
 		else 
 			insertNode(target->right, value);	
 	}
 }
 
-void BST::print(Node* n, std::string prefix, bool is_left, int depth) 
+void BST::print(Node* n, std::string prefix, bool is_left, int depth)
 {
 	if (n == nullptr) return; 
 
 	if (depth != 0) 
 	{
-		bool parent_has_left = n->parent->left == nullptr; 
+		bool parent_has_left = (n->parent->left == nullptr); 
 		
 		printf(is_left || parent_has_left ? "%s└── %i" : "%s├── %i", prefix.c_str(), n->value);
 		prefix += !is_left && !parent_has_left ? "│   " : "    ";
