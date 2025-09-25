@@ -26,7 +26,7 @@ void BST::insertNode(Node* target, int value)
 	}
 }
 
-void BST::print(Node* n, std::string prefix, bool is_left, int depth)
+void BST::print(Node* n, std::string prefix, bool is_left, int depth) const
 {
 	if (n == nullptr) return; 
 
@@ -43,6 +43,12 @@ void BST::print(Node* n, std::string prefix, bool is_left, int depth)
 
 	print(n->right, prefix, false, depth + 1);
 	print(n->left, prefix, true, depth + 1);
+}
+
+int BST::height(Node* cur) const // private implementation
+{
+	if (cur == nullptr) return 0; 
+	return 1 + std::max(height(cur->right), height(cur->left));
 }
 
 void BST::getAllLeaves(std::vector<Node*>* leaves, Node* cur) const 
