@@ -1,6 +1,6 @@
 #include "../include/bst.h"
 
-void BST::insertNode(Node* target, int value) 
+void BST::insert(Node* target, int value) 
 {
 	if (target == nullptr) return; 
 		
@@ -12,7 +12,7 @@ void BST::insertNode(Node* target, int value)
 			this->size++; 
 		}
 		else
-			insertNode(target->left, value);
+			insert(target->left, value);
 	}
 	else 
 	{
@@ -22,7 +22,7 @@ void BST::insertNode(Node* target, int value)
 			this->size++;
 		}
 		else 
-			insertNode(target->right, value);	
+			insert(target->right, value);	
 	}
 }
 

@@ -10,13 +10,12 @@ int main(void)
 {	
 	BST* tree = generateRandomBST(20, 10, 30); 
 
-	tree->print(tree->root);
+	tree->print();
 	printf("\n\n");
 	
-	tree->deleteNodeById(0);
-
+	tree->deleteNodeById(0); // test 
 	printf("\n\n");
-	tree->print(tree->root);
+	tree->print();
 
 	return 0; 
 }
